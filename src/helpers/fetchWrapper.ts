@@ -87,7 +87,7 @@ export const fetchWrapper = async <T = unknown>(
 		delete config.headers['Content-Type'];
 	}
 
-	const response = await fetch(`${process.env.REACT_APP_API_URL}${endpoint}`, config);
+	const response = await fetch(`${process.env.REACT_APP_API_URL}/api${endpoint}`, config);
 
 	if (response.ok) {
 		return getFormattedResponse(response);

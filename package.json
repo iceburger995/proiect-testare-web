@@ -8,16 +8,17 @@
     "@material-ui/icons": "^4.11.2",
     "@material-ui/pickers": "^3.3.10",
     "@material-ui/styles": "^4.11.4",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "react-scripts": "5.0.0",
-    "react-router-dom": "^5.2.0",
-    "web-vitals": "^2.1.4",
+    "classnames": "^2.3.1",
     "jwt-decode": "^3.1.2",
     "lodash": "^4.17.21",
     "moment": "^2.29.1",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
     "react-intl": "^5.20.4",
-    "uuid": "^8.3.2"
+    "react-router-dom": "^5.2.0",
+    "react-scripts": "5.0.0",
+    "uuid": "^8.3.2",
+    "web-vitals": "^2.1.4"
   },
   "devDependencies": {
     "@babel/core": "^7.14.6",

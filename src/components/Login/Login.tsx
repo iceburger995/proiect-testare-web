@@ -1,9 +1,13 @@
-import { TextField, Button } from '@material-ui/core';
+import { TextField, Button, Container, Grid, Typography } from '@material-ui/core';
+import CircularProgress from '@material-ui/core/CircularProgress';
 import React, { useState } from 'react';
+import { FormattedMessage, useIntl } from 'react-intl';
 import { useHistory } from 'react-router-dom';
 
 import { loginUser } from 'state/Authentication/actions';
 import { useAuth } from 'state/Authentication/useAuthContext';
+
+import { useLoginStyles } from './styles';
 
 interface FormType {
 	email: string;
@@ -12,22 +16,27 @@ interface FormType {
 
 export const Login: React.FunctionComponent = (): JSX.Element => {
 	const { push } = useHistory();
+	const { formatMessage } = useIntl();
 
 	const [form, setForm] = useState<FormType>({
 		email: '',
 		password: '',
 	});
+	const [isLoading, setIsLoading] = useState(false);
 
 	const { dispatch } = useAuth();
+	const classes = useLoginStyles();
 
 	const submitLogin = async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>): Promise<void> => {
 		e.preventDefault();
+		setIsLoading(true);
 		try {
 			const response = await loginUser(dispatch, form);
 
 			response && push('/');
 		} catch (error) {
 			console.log(error);
+			setIsLoading(false);
 		}
 	};
 
@@ -39,25 +48,38 @@ export const Login: React.FunctionComponent = (): JSX.Element => {
 	};
 
 	return (
-		<div>
-			<div>
-				<TextField id="email-input" name="email" label="Email" variant="outlined" onChange={(e) => handleInputs(e)} />
-			</div>
-			<div>
-				<TextField
-					id="password-input"
-					name="password"
-					type="password"
-					label="Password"
-					variant="outlined"
-					onChange={(e) => handleInputs(e)}
-				/>
-			</div>
-			<div>
-				<Button variant="contained" color="primary" onClick={submitLogin}>
-					Submit
-				</Button>
-			</div>
-		</div>
+		<Container maxWidth="sm" className={classes.wrapper}>
+			<Grid container spacing={3} className={classes.formContainer}>
+				<Grid item xs={8}>
+					<Typography variant="h5">
+						<FormattedMessage id="login__title" />
+					</Typography>
+				</Grid>
+				<Grid item xs={8}>
+					<TextField
+						id="email-input"
+						name="email"
+						label={formatMessage({ id: 'common__email' })}
+						variant="outlined"
+						onChange={(e) => handleInputs(e)}
+					/>
+				</Grid>
+				<Grid item xs={8}>
+					<TextField
+						id="password-input"
+						name="password"
+						type="password"
+						label={formatMessage({ id: 'login__password' })}
+						variant="outlined"
+						onChange={(e) => handleInputs(e)}
+					/>
+				</Grid>
+				<Grid item xs={8} className={classes.submitWrapper}>
+					<Button disabled={isLoading} variant="contained" color="primary" onClick={submitLogin}>
+						{isLoading ? <CircularProgress size={22} /> : <FormattedMessage id="login__submit" />}
+					</Button>
+				</Grid>
+			</Grid>
+		</Container>
 	);
 };
