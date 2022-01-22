@@ -8,7 +8,7 @@ export interface AuthInitialState {
 	token: string;
 	isAuthenticated?: boolean;
 	loading: boolean;
-	errorMessage?: string;
+	error?: unknown;
 }
 
 export enum ActionType {

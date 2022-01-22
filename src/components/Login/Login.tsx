@@ -22,22 +22,16 @@ export const Login: React.FunctionComponent = (): JSX.Element => {
 		email: '',
 		password: '',
 	});
-	const [isLoading, setIsLoading] = useState(false);
+	const { dispatch, state } = useAuth();
+	const { error, loading } = state;
 
-	const { dispatch } = useAuth();
 	const classes = useLoginStyles();
 
 	const submitLogin = async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>): Promise<void> => {
 		e.preventDefault();
-		setIsLoading(true);
-		try {
-			const response = await loginUser(dispatch, form);
+		const response = await loginUser(dispatch, form);
 
-			response && push('/');
-		} catch (error) {
-			console.log(error);
-			setIsLoading(false);
-		}
+		response && push('/');
 	};
 
 	const handleInputs = (e: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>): void => {
@@ -74,9 +68,16 @@ export const Login: React.FunctionComponent = (): JSX.Element => {
 						onChange={(e) => handleInputs(e)}
 					/>
 				</Grid>
+				<Grid item xs={8}>
+					{(error as Record<string, unknown>).status === 401 && (
+						<Typography variant="subtitle2" className={classes.error}>
+							<FormattedMessage id="login__401" />
+						</Typography>
+					)}
+				</Grid>
 				<Grid item xs={8} className={classes.submitWrapper}>
-					<Button disabled={isLoading} variant="contained" color="primary" onClick={submitLogin}>
-						{isLoading ? <CircularProgress size={22} /> : <FormattedMessage id="login__submit" />}
+					<Button disabled={loading} variant="contained" color="primary" onClick={submitLogin}>
+						{loading ? <CircularProgress size={22} /> : <FormattedMessage id="login__submit" />}
 					</Button>
 				</Grid>
 			</Grid>

@@ -5,6 +5,7 @@ export const authReducer = (state: AuthInitialState, action: AuthActions): AuthI
 		case ActionType.LOGIN_REQUEST:
 			return {
 				...state,
+				error: {},
 				loading: true,
 			};
 		case ActionType.LOGIN_SUCCESS:
@@ -17,13 +18,14 @@ export const authReducer = (state: AuthInitialState, action: AuthActions): AuthI
 				isAuthenticated: true,
 				user: action.payload.user,
 				token: action.payload.token,
+				error: {},
 			};
 		case ActionType.LOGIN_ERROR:
 			return {
 				...state,
 				isAuthenticated: false,
 				loading: false,
-				errorMessage: action.payload.error,
+				error: action.payload.error,
 			};
 		case ActionType.LOGOUT:
 			localStorage.clear();
@@ -32,6 +34,7 @@ export const authReducer = (state: AuthInitialState, action: AuthActions): AuthI
 				...state,
 				isAuthenticated: false,
 				user: null,
+				error: {},
 			};
 		default:
 			throw new Error(`Unhandled action type: ${action}`);

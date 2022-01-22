@@ -19,9 +19,8 @@ export async function loginUser(
 
 			return response;
 		}
-
-		return;
 	} catch (error) {
+		console.log('error', error);
 		dispatch({ type: ActionType.LOGIN_ERROR, payload: { error: error as any } });
 	}
 }

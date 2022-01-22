@@ -22,8 +22,8 @@ export const useLoginStyles = makeStyles(
 					width: '100%',
 				},
 			},
-			h5: {
-				color: theme.palette.common.black,
+			error: {
+				color: theme.palette.error.main,
 			},
 		}),
 	{ index: 1 }

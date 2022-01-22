@@ -8,6 +8,7 @@ const INITIAL_STATE: AuthInitialState = {
 	isAuthenticated: false,
 	token: '',
 	loading: false,
+	error: {},
 };
 
 const INITIAL_CONTEXT: AuthContextProps = {
