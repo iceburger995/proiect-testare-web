@@ -28,6 +28,11 @@ export const NAVIGATION_SECTIONS: NavItem[] = [
 		url: '/profile',
 		title: <FormattedMessage id="profile__title" />,
 	},
+	{
+		id: 'users',
+		url: '/users',
+		title: <FormattedMessage id="users__title" />,
+	},
 ];
 
 interface SidebarProps {

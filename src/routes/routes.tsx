@@ -5,10 +5,12 @@ export const LOGIN = '/login';
 export const HOME = '/';
 export const NOT_FOUND = '/not-found';
 export const PROFILE = '/profile';
+export const USERS = '/users';
 
 const { NotFound } = lazyImport(() => import('components/NotFound/NotFound'), 'NotFound');
 const { Login } = lazyImport(() => import('components/Login/Login'), 'Login');
 const { Home } = lazyImport(() => import('components/Home/Home'), 'Home');
+const { Users } = lazyImport(() => import('components/Users/Users'), 'Users');
 const { UnderConstruction } = lazyImport(
 	() => import('components/UnderConstruction/UnderConstruction'),
 	'UnderConstruction'
@@ -37,6 +39,12 @@ export const routes: Array<RouteProps> = [
 		path: PROFILE,
 		exact: true,
 		component: UnderConstruction,
+		isPrivate: false,
+	},
+	{
+		path: USERS,
+		exact: true,
+		component: Users,
 		isPrivate: false,
 	},
 ];
