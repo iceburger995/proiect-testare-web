@@ -1,5 +1,5 @@
-import { red, green, purple } from '@material-ui/core/colors';
-import { PaletteOptions } from '@material-ui/core/styles/createPalette';
+import { PaletteOptions } from '@mui/material';
+import { red, green, purple } from '@mui/material/colors';
 
 import { light } from './palette';
 
@@ -14,7 +14,7 @@ export type themes = {
 export const themes: themes = {
 	LIGHT: {
 		palette: {
-			type: 'light',
+			mode: 'light',
 			primary: {
 				light: '#66D3FA',
 				main: '#3C99DC',

@@ -1,5 +1,5 @@
-import { Theme, createTheme } from '@material-ui/core/styles';
-import createPalette from '@material-ui/core/styles/createPalette';
+import { createTheme, Theme } from '@mui/material';
+import createPalette from '@mui/material/styles/createPalette';
 
 import { themes, themesList } from './themes';
 
@@ -36,110 +36,140 @@ export const customTheme = (theme: themesList): Theme => {
 				leavingScreen: 200,
 			},
 		},
-		overrides: {
+		components: {
 			// An example of how we can modify global styles for some components
 			// https://material-ui.com/customization/globals/
 			MuiSelect: {
-				selectMenu: {
-					height: 16,
+				styleOverrides: {
+					select: {
+						height: 16,
+					},
 				},
 			},
 			MuiTablePagination: {
-				root: {
-					flexShrink: 0,
-					boxShadow: `0 -1px 2px 0 ${palette.divider}`,
+				styleOverrides: {
+					root: {
+						flexShrink: 0,
+						boxShadow: `0 -1px 2px 0 ${palette.divider}`,
+					},
 				},
 			},
 			MuiTableCell: {
-				head: {
-					fontWeight: 700,
-					whiteSpace: 'nowrap',
+				styleOverrides: {
+					head: {
+						fontWeight: 700,
+						whiteSpace: 'nowrap',
+					},
 				},
 			},
 			MuiSvgIcon: {
-				root: {
-					verticalAlign: 'baseline',
+				styleOverrides: {
+					root: {
+						verticalAlign: 'baseline',
+					},
 				},
 			},
 			MuiButton: {
-				root: {
-					fontWeight: 700,
-					minWidth: '90px',
+				styleOverrides: {
+					root: {
+						fontWeight: 700,
+						minWidth: '90px',
+					},
 				},
 			},
 			MuiMenuItem: {
-				root: {
-					[defaultTheme.breakpoints.up('sm')]: {
-						minHeight: '36px',
+				styleOverrides: {
+					root: {
+						[defaultTheme.breakpoints.up('sm')]: {
+							minHeight: '36px',
+						},
 					},
 				},
 			},
 			MuiTab: {
-				root: {
-					padding: '20px 12px',
-				},
-				wrapper: {
-					fontSize: '14px',
-					fontWeight: 700,
-					textTransform: 'none',
-				},
-				labelIcon: {
-					padding: '20px 12px',
-					paddingTop: '20px',
+				styleOverrides: {
+					root: {
+						padding: '20px 12px',
+					},
+					wrapped: {
+						fontSize: '14px',
+						fontWeight: 700,
+						textTransform: 'none',
+					},
+					labelIcon: {
+						padding: '20px 12px',
+						paddingTop: '20px',
+					},
 				},
 			},
 			MuiFormControl: {
-				root: {
-					width: '100%',
-					fontSize: '14px',
+				styleOverrides: {
+					root: {
+						width: '100%',
+						fontSize: '14px',
+					},
 				},
 			},
 			MuiOutlinedInput: {
-				input: {
-					fontSize: '14px',
+				styleOverrides: {
+					input: {
+						fontSize: '14px',
+					},
 				},
 			},
 			MuiInputLabel: {
-				root: {
-					fontSize: '14px',
+				styleOverrides: {
+					root: {
+						fontSize: '14px',
+					},
 				},
 			},
 			MuiFormControlLabel: {
-				label: {
-					fontSize: '14px',
+				styleOverrides: {
+					label: {
+						fontSize: '14px',
+					},
 				},
 			},
 			MuiChip: {
-				root: {
-					borderRadius: '.4em',
-					padding: 0,
-					height: '26px',
-					color: '#fff',
-				},
-				label: {
-					padding: '0 .4rem',
+				styleOverrides: {
+					root: {
+						borderRadius: '.4em',
+						padding: 0,
+						height: '26px',
+						color: '#fff',
+					},
+					label: {
+						padding: '0 .4rem',
+					},
 				},
 			},
 			MuiIconButton: {
-				sizeSmall: {
-					padding: 4,
+				styleOverrides: {
+					sizeSmall: {
+						padding: 4,
+					},
 				},
 			},
 			MuiAccordion: {
-				root: {
-					margin: 0,
-					'&.Mui-expanded': {
+				styleOverrides: {
+					root: {
 						margin: 0,
-					},
-					'&:not(:first-child)': {
-						borderTop: '1px solid #eee',
+						'&.Mui-expanded': {
+							margin: 0,
+						},
+						'&:not(:first-child)': {
+							borderTop: '1px solid #eee',
+						},
 					},
 				},
 			},
 			MuiFormHelperText: {
-				root: {
-					textOverflow: 'ellipsis',
-					overflow: 'hidden',
+				styleOverrides: {
+					root: {
+						textOverflow: 'ellipsis',
+						overflow: 'hidden',
+					},
 				},
 			},
 		},

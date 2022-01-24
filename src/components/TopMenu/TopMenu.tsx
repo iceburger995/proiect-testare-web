@@ -1,9 +1,12 @@
-import { AppBar, Toolbar, Button, Grid } from '@material-ui/core';
+import LogoutIcon from '@mui/icons-material/Logout';
+import { AppBar, Button, Grid, Toolbar } from '@mui/material';
 import React, { useRef } from 'react';
 import { useIntl } from 'react-intl';
 
 import * as Flags from 'assets/flags';
 import Logo from 'assets/logo.png';
+import { logout } from 'state/Authentication/actions';
+import { useAuth } from 'state/Authentication/useAuthContext';
 import { useLanguage } from 'state/Language/useLanguage';
 
 import { useTopMenuStyles } from './styles';
@@ -15,12 +18,13 @@ export const TopMenu: React.FunctionComponent = () => {
 
 	const { changeLanguage } = useLanguage();
 
+	const { dispatch, state } = useAuth();
+
 	return (
 		<AppBar
 			position="static"
 			variant="elevation"
 			color="secondary"
-			ref={topMenuRef}
 			className={classes.topMenu}
 			aria-label={formatMessage({ id: 'label__topmenu_header' })}
 		>
@@ -47,6 +51,11 @@ export const TopMenu: React.FunctionComponent = () => {
 							<img src={Flags.ROFlag} className={classes.languageImage} alt="language" />
 							RO
 						</Button>
+						{state.isAuthenticated && (
+							<Button onClick={() => logout(dispatch)}>
+								<LogoutIcon />
+							</Button>
+						)}
 					</Grid>
 				</Grid>
 			</Toolbar>

@@ -1,12 +1,12 @@
-import { makeStyles, createStyles } from '@material-ui/core/styles';
+import { makeStyles, createStyles } from '@mui/styles';
 
 export const useAppStyles = makeStyles(
 	() =>
 		createStyles({
 			root: {
-				height: '100vh',
-				display: 'flex',
+				display: 'flex !important',
 				flexDirection: 'column',
+				height: '100vh',
 			},
 		}),
 	{ index: 1 }

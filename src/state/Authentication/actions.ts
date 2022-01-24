@@ -28,3 +28,7 @@ export async function loginUser(
 export async function logout(dispatch: Dispatch<AuthActions>): Promise<void> {
 	dispatch({ type: ActionType.LOGOUT });
 }
+
+export async function checkLoggedInUser(dispatch: Dispatch<AuthActions>): Promise<void> {
+	dispatch({ type: ActionType.CHECK_LOGGED_IN });
+}

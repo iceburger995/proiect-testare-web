@@ -7,7 +7,6 @@ export interface UserDTO {
 	lastName: string;
 	username: string;
 	isAdmin: boolean;
-	picture: string;
 }
 
 export interface UserLogin {

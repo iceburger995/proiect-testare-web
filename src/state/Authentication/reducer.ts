@@ -1,3 +1,5 @@
+import { UserDTO } from 'api/Login';
+
 import { ActionType, AuthInitialState, AuthActions } from './types';
 
 export const authReducer = (state: AuthInitialState, action: AuthActions): AuthInitialState => {
@@ -36,6 +38,26 @@ export const authReducer = (state: AuthInitialState, action: AuthActions): AuthI
 				user: null,
 				error: {},
 			};
+		case ActionType.CHECK_LOGGED_IN: {
+			const localStorageUser: UserDTO = JSON.parse(localStorage.getItem('user') || '{}');
+			const localStorageAccessToken: string = localStorage.getItem('access_token') || '';
+
+			if (!Object.keys(localStorageUser) || !localStorageAccessToken) {
+				return {
+					...state,
+					isAuthenticated: false,
+					user: null,
+					error: {},
+				};
+			}
+
+			return {
+				...state,
+				isAuthenticated: true,
+				user: localStorageUser,
+				token: localStorageAccessToken,
+			};
+		}
 		default:
 			throw new Error(`Unhandled action type: ${action}`);
 	}

@@ -1,7 +1,7 @@
-import { IconButton, ListItem, ListItemText, useScrollTrigger } from '@material-ui/core';
-import AppBar from '@material-ui/core/AppBar';
-import Drawer from '@material-ui/core/Drawer';
-import MenuIcon from '@material-ui/icons/MenuRounded';
+import MenuIcon from '@mui/icons-material/Menu';
+import { IconButton, ListItem, ListItemText, useScrollTrigger } from '@mui/material';
+import AppBar from '@mui/material/AppBar';
+import Drawer from '@mui/material/Drawer';
 import classnames from 'classnames';
 import React, { useRef } from 'react';
 import { FormattedMessage, useIntl } from 'react-intl';

@@ -1,4 +1,4 @@
-import { CssBaseline, ThemeProvider } from '@material-ui/core';
+import { CssBaseline, ThemeProvider } from '@mui/material';
 import React, { FunctionComponent, useState, useEffect } from 'react';
 
 import { customTheme } from 'theme';

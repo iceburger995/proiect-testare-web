@@ -16,6 +16,7 @@ export enum ActionType {
 	LOGIN_SUCCESS = 'LOGIN_SUCCESS',
 	LOGIN_ERROR = 'LOGIN_ERROR',
 	LOGOUT = 'LOGOUT',
+	CHECK_LOGGED_IN = 'CHECK_LOGGED_IN',
 }
 
 export type AuthPayload = {
@@ -30,6 +31,7 @@ export type AuthPayload = {
 		error: string;
 	};
 	[ActionType.LOGOUT]: undefined;
+	[ActionType.CHECK_LOGGED_IN]: undefined;
 };
 
 export type AuthActions = ActionMap<AuthPayload>[keyof ActionMap<AuthPayload>];

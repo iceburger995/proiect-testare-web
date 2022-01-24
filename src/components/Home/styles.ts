@@ -1,4 +1,4 @@
-import { makeStyles, createStyles } from '@material-ui/core';
+import { makeStyles, createStyles } from '@mui/styles';
 
 export const useHomeStyles = makeStyles(
 	() =>
