@@ -1,4 +1,3 @@
-import Container from '@mui/material/Container';
 import React, { Suspense, useCallback, useEffect, useState } from 'react';
 
 import { RouterWrapper, Loading, SideBar } from 'components';
@@ -25,7 +24,7 @@ export const AppWrapper = (): JSX.Element => {
 	}, []);
 
 	return (
-		<Container className={styles.root} disableGutters component="main">
+		<div className={styles.root}>
 			<TopMenu />
 			{state.isAuthenticated && (
 				<>
@@ -36,6 +35,6 @@ export const AppWrapper = (): JSX.Element => {
 			<Suspense fallback={<Loading />}>
 				<RouterWrapper routes={routes} />
 			</Suspense>
-		</Container>
+		</div>
 	);
 };
